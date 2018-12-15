@@ -1,4 +1,4 @@
-package jvcore.DaySeven;
+package jvcore.jvcore.DaySeven;
 
 public class WhileLoop {
     public static void main(String[] args){

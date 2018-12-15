@@ -1,4 +1,4 @@
-package jvcore.DaySeven;
+package jvcore.jvcore.DaySeven;
 
 public class Countdown {
     public static void main(String[] args) throws Exception {
