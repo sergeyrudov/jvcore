@@ -1,5 +1,5 @@
-package DaySeven;
-//сделать считалку от и до, посекундно, через задержку в слип
+package jvcore.jvcore.DaySeven;
+
 public class Countdown {
     public static void main(String[] args) throws Exception{
         countdown(5);
