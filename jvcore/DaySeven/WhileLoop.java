@@ -8,8 +8,9 @@ public class WhileLoop {
     static void loop(int i, int n){
             while (i<n) {
                 n++;
-                System.out.println(n);
-                return;
+  //              return;
+                i+=n;
+                System.out.println(n+" _"+i);
             }
         }
     }

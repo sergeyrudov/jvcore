@@ -1,4 +1,4 @@
-package dayFour;
+package jvcore.jvcore.dayFour;
 
 public class Coordinate {
     public static void main(String [] args){

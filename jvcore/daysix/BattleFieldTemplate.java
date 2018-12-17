@@ -1,9 +1,10 @@
-package DayFive.DaySix;
+package jvcore.jvcore.daysix;
 
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -42,10 +43,8 @@ public class BattleFieldTemplate extends JPanel {
 //            repaint();
 //            Thread.sleep(speed);
 //        }
-        move(1);
-        move(3);
-        move(4);
-        move(2);
+        moveToQuadrant("c","5");
+
     }
 
     void move(int direction) throws Exception {
@@ -73,6 +72,86 @@ public class BattleFieldTemplate extends JPanel {
         }
         repaint();
         Thread.sleep(speed);
+    }
+    void moveRandom() throws Exception {
+        while (true) {
+            Random r = new Random();
+            int n = r.nextInt(5);
+            if (n > 0) {
+                move(n);
+            }
+        }
+    }
+
+    void moveToQuadrant( String v, String h) throws Exception{
+        String coordinates = getQuadrant(v, h);
+        int x = Integer.parseInt(coordinates.substring(0,coordinates.indexOf("_")));
+        int y = Integer.parseInt(coordinates.substring(coordinates.indexOf("_")+1));
+        if(tankX<x){
+            while (tankX!=x){
+                move(4);
+            }
+        }
+        else {
+            while (tankX!=x){
+                move(3);
+            }
+        }
+        if(tankY<y){
+            while (tankY!=y){
+                move(2);
+            }
+        }
+        else {
+            while (tankY!=y){
+                move(1);
+            }
+        }
+
+    }
+
+    String getQuadrant( String v, String h){
+        int hor = Integer.parseInt(h);
+        int ver =1;
+        if(v.equals("b")){
+            ver=2;
+        }
+        else if(v.equals("c")){
+            ver=3;
+        }
+        else if(v.equals("d")){
+            ver=4;
+        }
+        else if(v.equals("e")){
+            ver=5;
+        }
+        else if(v.equals("f")){
+            ver=6;
+        }
+        else if(v.equals("g")){
+            ver=7;
+        }
+        else if(v.equals("h")){
+            ver=8;
+        }
+        else if(v.equals("i")){
+            ver=9;
+        }
+        return (hor*64-64)+"_"+(ver*64-64);
+    }
+
+
+    void myRandom() throws Exception{
+        //создать переменную с запуском systemcurrenttime
+        //перевести время в тип стринг
+        //вырезать последнюю цифру
+        //перевести последню цифру в тип int
+        //проверить входил ли цифра в диапазон от 1 до 4
+        //если входит то подавать на метод move
+        //если не входит задать новую
+        String a = "1234";
+
+
     }
 
 
