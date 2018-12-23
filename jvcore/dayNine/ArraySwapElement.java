@@ -10,14 +10,13 @@ public class ArraySwapElement {
     }
 
     public static void swap(int[] data) {
-        boolean isSorted = false;
+        boolean status = false;
         int buf = 0;
-        while(!isSorted) {
-            isSorted = true;
+        while(!status) {
+            status = true;
             for (int i = 0; i < data.length-1; i++) {
                 if(data[i] > data[i+1]){
-                    isSorted = false;
-
+                    status = false;
                     buf = data[i];
                     data[i] = data[i+1];
                     data[i+1] = buf;
