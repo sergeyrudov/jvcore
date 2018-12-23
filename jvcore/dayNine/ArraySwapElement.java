@@ -11,15 +11,15 @@ public class ArraySwapElement {
 
     public static void swap(int[] data) {
         boolean status = false;
-        int buf = 0;
+        int buffer = 0;
         while(!status) {
             status = true;
             for (int i = 0; i < data.length-1; i++) {
                 if(data[i] > data[i+1]){
                     status = false;
-                    buf = data[i];
+                    buffer = data[i];
                     data[i] = data[i+1];
-                    data[i+1] = buf;
+                    data[i+1] = buffer;
                 }
             }
         }
