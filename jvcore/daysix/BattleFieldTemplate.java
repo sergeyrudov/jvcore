@@ -43,7 +43,7 @@ public class BattleFieldTemplate extends JPanel {
 //            repaint();
 //            Thread.sleep(speed);
 //        }
-        moveToQuadrant("c","5");
+        moveToQuadrant(3,7);
 
     }
 
@@ -83,7 +83,7 @@ public class BattleFieldTemplate extends JPanel {
         }
     }
 
-    void moveToQuadrant( String v, String h) throws Exception{
+    void moveToQuadrant( int v, int h) throws Exception{
         String coordinates = getQuadrant(v, h);
         int x = Integer.parseInt(coordinates.substring(0,coordinates.indexOf("_")));
         int y = Integer.parseInt(coordinates.substring(coordinates.indexOf("_")+1));
@@ -110,51 +110,9 @@ public class BattleFieldTemplate extends JPanel {
 
     }
 
-    String getQuadrant( String v, String h){
-        int hor = Integer.parseInt(h);
-        int ver =1;
-        if(v.equals("b")){
-            ver=2;
-        }
-        else if(v.equals("c")){
-            ver=3;
-        }
-        else if(v.equals("d")){
-            ver=4;
-        }
-        else if(v.equals("e")){
-            ver=5;
-        }
-        else if(v.equals("f")){
-            ver=6;
-        }
-        else if(v.equals("g")){
-            ver=7;
-        }
-        else if(v.equals("h")){
-            ver=8;
-        }
-        else if(v.equals("i")){
-            ver=9;
-        }
-        return (hor*64-64)+"_"+(ver*64-64);
+    String getQuadrant( int v, int h){
+        return (h*64-64)+"_"+(v*64-64);
     }
-
-
-    void myRandom() throws Exception{
-        //создать переменную с запуском systemcurrenttime
-        //перевести время в тип стринг
-        //вырезать последнюю цифру
-        //перевести последню цифру в тип int
-        //проверить входил ли цифра в диапазон от 1 до 4
-        //если входит то подавать на метод move
-        //если не входит задать новую
-        String a = "1234";
-
-
-    }
-
-
     // Magic bellow. Do not worry about this now, you will understand everything in this course.
     // Please concentrate on your tasks only.
 
