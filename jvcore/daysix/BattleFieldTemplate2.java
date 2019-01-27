@@ -1,13 +1,9 @@
 package jvcore.jvcore.daysix;
 
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
 
 /**
  * @version 3.0
@@ -29,7 +25,7 @@ public class BattleFieldTemplate2 extends JPanel {
     int bulletY = -100;
 
     int speed = 10;
-    int bulletSpeed = 5;
+    int bulletSpeed = 1;
 
     String[][] battleField = {
             {"B", "B", "B", "B", "B", "B", "B", "B", "B"},
@@ -47,29 +43,65 @@ public class BattleFieldTemplate2 extends JPanel {
      * Write your code here.
      */
     void runTheGame() throws Exception {
-        moveToQuadrant(1, 2);
-        Thread.sleep(2000);
-        moveToQuadrant(3, 3);
-        Thread.sleep(2000);
-        moveToQuadrant(1, 4);
-        Thread.sleep(2000);
-        moveToQuadrant(9, 8);
+        moveRandom();
+  //      moveToQuadrant(1, 2);
+  //      Thread.sleep(2000);
+ //       moveToQuadrant(3, 3);
+ //       Thread.sleep(2000);
+ //       moveToQuadrant(1, 4);
+ //       Thread.sleep(2000);
+//        moveToQuadrant(9, 8);
+
     }
 
     boolean processInterception() {
+        String coordinates = getQuadrant(bulletX,bulletY);
+        int y = Integer.parseInt(coordinates.split("_")[0]);
+        int x = Integer.parseInt(coordinates.split("_")[1]);
+        if(y>=0 && y<=8 && x>=0 && x<=8){
+            if(!battleField[y][x].trim().isEmpty()){
+                battleField[y][x]=" ";
+                return true;
+            }
+        }
         return false;
     }
 
-    String getQuadrant(int x, int y) {
-        return null;
-    }
 
     void fire() throws Exception {
+        bulletX=tankX+25;
+        bulletY=tankY+25;
+
+        int step = 1;
+        while ((bulletX>-14 && bulletX<590) && (bulletY>-14 && bulletY<590)){
+            if(tankDirection==1){
+                bulletY-=step;
+            }
+            else if(tankDirection==2){
+                bulletY+=step;
+            }
+            else if(tankDirection==3){
+                bulletX-=step;
+            }
+            else{
+                bulletX+=step;
+            }
+            if(processInterception()){
+                bulletX=-100;
+                bulletY=-100;
+                break;
+            }
+            repaint();
+            Thread.sleep(bulletSpeed);
+        }
     }
 
 
     String getQuadrantXY(int v, int h) {
         return (v - 1) * 64 + "_" + (h - 1) * 64;
+    }
+    String getQuadrant(int x, int y) {
+        return y/64+"_"+x/64;
     }
 
     void move(int direction) throws Exception {
@@ -118,6 +150,7 @@ public class BattleFieldTemplate2 extends JPanel {
         while (true) {
             i = r.nextInt(5);
             if (i > 0) {
+                fire();
                 move(i);
             }
         }
